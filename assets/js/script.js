@@ -18,6 +18,12 @@ document.addEventListener("DOMContentLoaded",function(){
         })
 
     }
+    // set enter button to submit answer insted of "submit answer" button
+    document.getElementById("answer-box").addEventListener("keydown",function(event){
+        if(event.key=="Enter"){
+            checkAnswer();
+        }
+    })
   runGame("addition");
 })
 
@@ -26,6 +32,9 @@ document.addEventListener("DOMContentLoaded",function(){
  * and after the users answer has been processed
  */
 function runGame(gameType){
+    document.getElementById("answer-box").value="";
+    //set mouse icon in input box
+    document.getElementById("answer-box").focus();
     //create random numbers between 1 and 25
     let num1=Math.floor(Math.random()*25)+1;
     let num2=Math.floor(Math.random()*25)+1;
@@ -114,7 +123,7 @@ function displayAdditionQuestion(operand1, operand2){
 }
 function displaySubtractQuestion(operand1, operand2){
      document.getElementById("operand1").textContent=operand1 > operand2 ? operand1:operand2;
-    document.getElementById("operand2").textContent=operand1 > operand2 ? operand2:operand1;
+    document.getElementById("operand2").textContent=operand2 > operand2 ? operand2:operand1;
     document.getElementById("operator").textContent="-";
 
 }
